@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #F9F7F4;
+  --foreground: #040606;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F9F7F4;
+  color: #040606;
+  font-family: "Inter", system-ui, sans-serif;
 }
+
+/* Progress bar */
+.progress-track {
+  background-color: #E5E1DC;
+  border-radius: 9999px;
+  height: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  background-color: #AB830A;
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+/* Location card */
+.location-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+.location-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(4,6,6,0.10);
+}
+.location-card.selected {
+  border-color: #AB830A !important;
+  box-shadow: 0 0 0 2px #AB830A;
+}
+
+/* Occasion tile */
+.occasion-tile {
+  transition: all 0.18s ease;
+  cursor: pointer;
+}
+.occasion-tile:hover {
+  border-color: #AB830A;
+  background-color: #FFF8E8;
+}
+.occasion-tile.selected {
+  border-color: #AB830A !important;
+  background-color: #FFF8E8;
+  box-shadow: 0 0 0 2px #AB830A;
+}
+
+/* Upload dropzone */
+.dropzone {
+  border: 2px dashed #E5E1DC;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.dropzone.active {
+  border-color: #AB830A;
+  background-color: #FFF8E8;
+}
+
+/* Mood chip */
+.mood-chip {
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.mood-chip.selected {
+  background-color: #040606;
+  color: #F9F7F4;
+}
+
+/* Admin status badges */
+.badge-new       { background: #FFF3CD; color: #856404; border-radius: 9999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.badge-reviewed  { background: #CCE5FF; color: #004085; border-radius: 9999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.badge-confirmed { background: #D4EDDA; color: #155724; border-radius: 9999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.badge-completed { background: #E2E3E5; color: #383D41; border-radius: 9999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+
+/* Form inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E1DC;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: #040606;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  font-family: inherit;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: #AB830A;
+  box-shadow: 0 0 0 3px rgba(171,131,10,0.12);
+}
+input::placeholder, textarea::placeholder {
+  color: #B0A898;
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideUp 0.28s ease-out;
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F0EDE8; }
+::-webkit-scrollbar-thumb { background: #C9A030; border-radius: 3px; }
