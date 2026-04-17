@@ -2,12 +2,12 @@
 
 :root {
   --background: #111111;
-  --foreground: #ffffff;
+  --foreground: #040606;
 }
 
 body {
   background-color: #111111;
-  color: #ffffff;
+  color: #040606;
   font-family: "Inter", system-ui, sans-serif;
 }
 
