@@ -208,7 +208,7 @@ export default function IntakeWizard({ onSuccess }: Props) {
           <button
             type="button"
             onClick={goNext}
-            className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-brand-black text-brand-cream text-sm font-semibold hover:bg-gray-800 transition-all"
+            className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-brand-gold text-white text-sm font-semibold hover:bg-brand-gold-light transition-all"
           >
             Continue <ChevronRight className="w-4 h-4" />
           </button>
