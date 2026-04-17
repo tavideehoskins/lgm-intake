@@ -1,15 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-
-// Client for browser/public use
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Client for browser/public use (lazy — avoids build-time crash when env vars are absent)
+export function getClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
 
 // Service client for server-side operations (bypasses RLS)
 export function getServiceClient() {
-  return createClient(supabaseUrl, supabaseServiceKey, {
-    auth: { persistSession: false },
-  });
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { persistSession: false } }
+  );
 }
