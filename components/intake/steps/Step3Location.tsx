@@ -186,13 +186,17 @@ export default function Step3Location({ data, onChange }: Props) {
                 }`}
               >
                 {/* Image */}
-                <div className="relative h-36 overflow-hidden bg-gray-100">
+                <div className="relative h-36 overflow-hidden bg-gradient-to-br from-brand-cream-dark to-brand-cream flex items-center justify-center">
+                  <span className="text-brand-muted text-xs font-medium px-4 text-center leading-relaxed opacity-50">
+                    {loc.name}
+                  </span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={loc.imageUrl}
                     alt={loc.name}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                   />
                   <span className="absolute top-2 left-2 bg-white/90 text-xs font-medium px-2 py-0.5 rounded-full text-brand-black">
                     {CATEGORY_LABELS[loc.category]}

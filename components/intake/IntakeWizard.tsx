@@ -36,6 +36,7 @@ const INITIAL: IntakeFormData = {
   weatherSensitive: false,
   visionDescription: "",
   moods: [],
+  lightingPref: "",
   inspirationPhotos: [],
   colorPaletteChoice: "",
   outfitNotes: "",
@@ -92,11 +93,17 @@ export default function IntakeWizard({ onSuccess }: Props) {
     try {
       const formData = new FormData();
 
-      // Append all non-file fields
-      const { inspirationPhotos, moods, ...rest } = data;
+      // Append all non-file fields (exclude lightingPref — merged into visionDescription)
+      const { inspirationPhotos, moods, lightingPref, visionDescription, ...rest } = data;
       Object.entries(rest).forEach(([k, v]) => {
         formData.append(k, String(v));
       });
+
+      // Prepend lighting preference to vision description if selected
+      const lightingNote = lightingPref
+        ? `Lighting preference: ${lightingPref === "natural" ? "Natural / Ambient Light" : "Studio / Flash / Strobe"}\n\n`
+        : "";
+      formData.append("visionDescription", lightingNote + visionDescription);
       formData.append("moods", JSON.stringify(moods));
 
       // Append inspiration photos
@@ -130,7 +137,7 @@ export default function IntakeWizard({ onSuccess }: Props) {
       {/* Progress bar */}
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs text-brand-muted">
+          <span className="text-xs text-white/50">
             Step {step + 1} of {STEPS.length}
           </span>
           <span className="text-xs font-medium text-brand-gold">
@@ -149,8 +156,8 @@ export default function IntakeWizard({ onSuccess }: Props) {
                 i === step
                   ? "text-brand-gold"
                   : i < step
-                  ? "text-brand-black"
-                  : "text-brand-border"
+                  ? "text-white/60"
+                  : "text-white/20"
               }`}
             >
               {i < step ? "✓" : s.short}
@@ -183,7 +190,7 @@ export default function IntakeWizard({ onSuccess }: Props) {
           type="button"
           onClick={goBack}
           disabled={step === 0}
-          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-brand-border text-sm font-medium text-brand-black hover:border-brand-gold transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-white/20 text-sm font-medium text-white/70 hover:border-brand-gold hover:text-white transition-all disabled:opacity-20 disabled:cursor-not-allowed"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>

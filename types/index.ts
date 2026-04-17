@@ -66,6 +66,7 @@ export interface IntakeFormData {
   // Step 4 — Vision
   visionDescription: string;
   moods: string[];
+  lightingPref: "" | "natural" | "studio";
 
   // Step 5 — Uploads
   inspirationPhotos: File[];

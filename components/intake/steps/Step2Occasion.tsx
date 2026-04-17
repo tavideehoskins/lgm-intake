@@ -84,14 +84,17 @@ export default function Step2Occasion({ data, onChange }: Props) {
               onClick={() => onChange({ groupSize: value })}
               className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
                 data.groupSize === value
-                  ? "bg-brand-black text-brand-cream border-brand-black"
+                  ? "bg-brand-gold text-white border-brand-gold shadow-md scale-105"
                   : "bg-white border-brand-border text-brand-black hover:border-brand-gold"
               }`}
             >
-              {label}
+              {data.groupSize === value ? `✓ ${label}` : label}
             </button>
           ))}
         </div>
+        {!data.groupSize && (
+          <p className="text-xs text-brand-muted mt-1">Select one to continue</p>
+        )}
       </div>
     </div>
   );
