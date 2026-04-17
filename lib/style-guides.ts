@@ -298,6 +298,11 @@ export const STYLE_GUIDES: Partial<Record<string, StyleGuide>> = {
       "Coordinate the family — warm neutrals or deep jewel tones work great.",
       "Layering (scarves, cardigans) adds a cozy holiday feel.",
     ],
+    whatToAvoid: [
+      "Overly busy patterns or clashing colors between family members",
+      "Literal holiday costumes unless intentionally themed",
+      "Too many competing props — keep it simple and intentional",
+    ],
     whatToBring: [
       "Any holiday props: ornaments, wrapped gifts, garland",
       "Pets are welcome with proper handling",
