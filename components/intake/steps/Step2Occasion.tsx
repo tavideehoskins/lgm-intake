@@ -82,9 +82,10 @@ export default function Step2Occasion({ data, onChange }: Props) {
               key={value}
               type="button"
               onClick={() => onChange({ groupSize: value })}
+              style={data.groupSize === value ? { backgroundColor: "#AB830A", color: "#ffffff", borderColor: "#AB830A" } : {}}
               className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
                 data.groupSize === value
-                  ? "bg-brand-gold !text-white border-brand-gold ring-2 ring-brand-gold/30"
+                  ? "ring-2 ring-brand-gold/30"
                   : "bg-white border-brand-border text-brand-black hover:border-brand-gold"
               }`}
             >
