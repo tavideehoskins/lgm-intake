@@ -25,6 +25,7 @@ export interface Location {
   priceNote?: string;
   tags: string[];
   imageUrl: string;
+  websiteUrl?: string;
   bestFor: ShootType[];
 }
 

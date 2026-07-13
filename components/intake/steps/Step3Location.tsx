@@ -170,16 +170,23 @@ export default function Step3Location({ data, onChange }: Props) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {filtered.map((loc) => (
-              <button
+              <div
                 key={loc.id}
-                type="button"
+                role="button"
+                tabIndex={0}
                 onClick={() =>
                   onChange({
                     locationId: loc.id,
                     locationCustom: "",
                   })
                 }
-                className={`location-card text-left border rounded-xl overflow-hidden bg-white ${
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onChange({ locationId: loc.id, locationCustom: "" });
+                  }
+                }}
+                className={`location-card cursor-pointer text-left border rounded-xl overflow-hidden bg-white ${
                   data.locationId === loc.id
                     ? "selected border-brand-gold"
                     : "border-brand-border"
@@ -218,6 +225,17 @@ export default function Step3Location({ data, onChange }: Props) {
                       {loc.priceNote}
                     </p>
                   )}
+                  {loc.websiteUrl && (
+                    <a
+                      href={loc.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-block text-xs font-medium text-brand-gold underline underline-offset-2 mt-1.5 hover:text-brand-black"
+                    >
+                      See what this space offers ↗
+                    </a>
+                  )}
                   <div className="flex flex-wrap gap-1 mt-2">
                     {loc.tags.slice(0, 3).map((tag) => (
                       <span
@@ -229,7 +247,7 @@ export default function Step3Location({ data, onChange }: Props) {
                     ))}
                   </div>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
 

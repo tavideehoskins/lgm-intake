@@ -12,6 +12,7 @@ export const LOCATIONS: Location[] = [
     address: "4560 Essen Ln, Baton Rouge, LA 70809",
     tags: ["trees", "gardens", "rustic", "lush", "historic"],
     imageUrl: "/locations/br-burden-gardens.jpg",
+    websiteUrl: "https://www.lsuagcenter.com/botanicgardens",
     bestFor: ["family", "maternity", "engagement", "graduation", "branding"],
   },
   {
@@ -24,6 +25,7 @@ export const LOCATIONS: Location[] = [
     address: "State Capitol Dr, Baton Rouge, LA 70801",
     tags: ["oaks", "open", "landmark", "downtown", "iconic"],
     imageUrl: "/locations/br-arsenal-park.jpg",
+    websiteUrl: "https://www.visitbatonrouge.com/directory/old-arsenal-museum/",
     bestFor: ["family", "graduation", "headshot", "engagement", "birthday"],
   },
   {
@@ -36,6 +38,7 @@ export const LOCATIONS: Location[] = [
     address: "City Park, Baton Rouge, LA 70808",
     tags: ["oaks", "lake", "golden hour", "Spanish moss", "romantic"],
     imageUrl: "/locations/br-city-park.jpg",
+    websiteUrl: "https://www.brec.org/facility/CityBrooksCommunityPark",
     bestFor: ["family", "engagement", "maternity", "graduation", "birthday"],
   },
   {
@@ -48,7 +51,22 @@ export const LOCATIONS: Location[] = [
     address: "10503 N Oak Hills Pkwy, Baton Rouge, LA 70810",
     tags: ["swamp", "moody", "water", "cypress", "cinematic"],
     imageUrl: "/locations/br-bluebonnet-swamp.jpg",
+    websiteUrl: "https://www.brec.org/facility/BluebonnetSwamp",
     bestFor: ["branding", "engagement", "maternity"],
+  },
+  {
+    id: "br-hilltop-arboretum",
+    name: "LSU Hilltop Arboretum",
+    city: "baton_rouge",
+    category: "natural",
+    description:
+      "Fourteen acres of Louisiana native trees with winding paths, wooden bridges, a sunlit meadow, and a serene pavilion pond. A photographer favorite on Highland Road.",
+    address: "11855 Highland Rd, Baton Rouge, LA 70810",
+    priceNote: "$40 photography fee — added to session total",
+    tags: ["native trees", "meadow", "bridges", "pond", "serene"],
+    imageUrl: "/locations/br-hilltop-arboretum.jpg",
+    websiteUrl: "https://www.lsu.edu/hilltop/index.php",
+    bestFor: ["family", "engagement", "maternity", "graduation", "branding"],
   },
 
   // ─── BATON ROUGE — Urban ──────────────────────────────────────────────
@@ -62,6 +80,7 @@ export const LOCATIONS: Location[] = [
     address: "Downtown Baton Rouge, LA 70801",
     tags: ["murals", "brick", "historic", "waterfront", "editorial"],
     imageUrl: "/locations/br-downtown.jpg",
+    websiteUrl: "https://downtownbatonrouge.org/",
     bestFor: ["headshot", "branding", "graduation", "birthday", "engagement"],
   },
   {
@@ -74,6 +93,7 @@ export const LOCATIONS: Location[] = [
     address: "1509 Government St, Baton Rouge, LA 70802",
     tags: ["industrial", "murals", "warehouse", "creative", "textured"],
     imageUrl: "/locations/br-electric-depot.jpg",
+    websiteUrl: "https://www.electricdepotbr.com/",
     bestFor: ["branding", "headshot", "birthday", "graduation"],
   },
   {
@@ -86,6 +106,7 @@ export const LOCATIONS: Location[] = [
     address: "100 North Blvd, Baton Rouge, LA 70801",
     tags: ["castle", "stained glass", "gothic", "landmark", "dramatic"],
     imageUrl: "/locations/br-old-state-capitol.jpg",
+    websiteUrl: "https://louisianaoldstatecapitol.org/",
     bestFor: ["graduation", "engagement", "headshot", "birthday"],
   },
 
@@ -100,6 +121,7 @@ export const LOCATIONS: Location[] = [
     address: "7711 Goodwood Blvd, Baton Rouge, LA 70806",
     tags: ["architecture", "gardens", "clean", "modern", "polished"],
     imageUrl: "/locations/br-library.jpg",
+    websiteUrl: "https://www.ebrpl.com/locations/main-library/",
     bestFor: ["headshot", "graduation", "branding", "family"],
   },
   {
@@ -112,6 +134,7 @@ export const LOCATIONS: Location[] = [
     address: "Baton Rouge, LA 70803",
     tags: ["oaks", "collegiate", "historic", "graduation", "grand"],
     imageUrl: "/locations/br-lsu-campus.jpg",
+    websiteUrl: "https://www.lsu.edu/",
     bestFor: ["graduation", "headshot", "family", "branding"],
   },
 
@@ -127,6 +150,7 @@ export const LOCATIONS: Location[] = [
     priceNote: "$75/hr — added to session total",
     tags: ["white seamless", "rustic", "versatile", "mid city", "indoor"],
     imageUrl: "/locations/br-achroma.jpg",
+    websiteUrl: "https://www.achromastudio.com/",
     bestFor: ["headshot", "branding", "birthday", "family", "maternity"],
   },
   {
@@ -140,6 +164,7 @@ export const LOCATIONS: Location[] = [
     priceNote: "$90/hr — added to session total",
     tags: ["themed sets", "luxury", "multiple looks", "MUA station", "seamless"],
     imageUrl: "/locations/br-exprosures.jpg",
+    websiteUrl: "https://www.exprosures.net/studiotwo",
     bestFor: ["headshot", "branding", "birthday", "family", "maternity"],
   },
   {
@@ -153,6 +178,7 @@ export const LOCATIONS: Location[] = [
     priceNote: "$78/hr — added to session total",
     tags: ["themed rooms", "props", "rustic", "elegant", "creative"],
     imageUrl: "/locations/br-geaux-create.jpg",
+    websiteUrl: "https://geauxcreatestudios.com/",
     bestFor: ["birthday", "branding", "headshot", "family", "holiday"],
   },
 
@@ -167,6 +193,7 @@ export const LOCATIONS: Location[] = [
     address: "201 Moncus Park Dr, Lafayette, LA 70503",
     tags: ["park", "trails", "pond", "hills", "wildflowers"],
     imageUrl: "/locations/laf-moncus-park.jpg",
+    websiteUrl: "https://moncuspark.org/",
     bestFor: ["family", "engagement", "maternity", "birthday", "graduation"],
   },
   {
@@ -179,6 +206,7 @@ export const LOCATIONS: Location[] = [
     address: "Downtown Lafayette, LA 70501",
     tags: ["murals", "colorful", "historic", "walkable", "Cajun"],
     imageUrl: "/locations/laf-downtown.jpg",
+    websiteUrl: "https://downtownlafayette.org/",
     bestFor: ["headshot", "branding", "graduation", "birthday"],
   },
   {
@@ -191,6 +219,7 @@ export const LOCATIONS: Location[] = [
     address: "Pineville, LA 71360",
     tags: ["lake", "dock", "railroad", "tall grass", "wildflowers"],
     imageUrl: "/locations/laf-buhlow-lake.jpg",
+    websiteUrl: "https://explorealexandriapineville.com/listings/lake-buhlow/",
     bestFor: ["engagement", "family", "maternity", "birthday"],
   },
 
@@ -205,6 +234,7 @@ export const LOCATIONS: Location[] = [
     address: "1 Palm Dr, New Orleans, LA 70124",
     tags: ["oaks", "Spanish moss", "NOMA", "lagoon", "timeless"],
     imageUrl: "/locations/nola-city-park.jpg",
+    websiteUrl: "https://neworleanscitypark.org/",
     bestFor: ["engagement", "family", "maternity", "graduation", "birthday"],
   },
   {
@@ -217,6 +247,7 @@ export const LOCATIONS: Location[] = [
     address: "6500 Magazine St, New Orleans, LA 70118",
     tags: ["oaks", "meadow", "lagoon", "serene", "uptown"],
     imageUrl: "/locations/nola-audubon.jpg",
+    websiteUrl: "https://audubonnatureinstitute.org/audubon-park",
     bestFor: ["family", "engagement", "maternity", "branding"],
   },
   {
@@ -229,6 +260,7 @@ export const LOCATIONS: Location[] = [
     address: "French Quarter, New Orleans, LA 70116",
     tags: ["balconies", "colorful", "historic", "iconic", "NOLA"],
     imageUrl: "/locations/nola-french-quarter.jpg",
+    websiteUrl: "https://www.neworleans.com/plan/neighborhoods/french-quarter/",
     bestFor: ["branding", "birthday", "graduation", "headshot", "engagement"],
   },
   {
@@ -241,6 +273,7 @@ export const LOCATIONS: Location[] = [
     address: "Faubourg Marigny, New Orleans, LA 70117",
     tags: ["shotgun houses", "colorful", "street art", "artsy", "unique"],
     imageUrl: "/locations/nola-marigny.jpg",
+    websiteUrl: "https://www.neworleans.com/plan/neighborhoods/marigny-bywater/",
     bestFor: ["branding", "birthday", "headshot", "engagement"],
   },
   {
@@ -253,6 +286,7 @@ export const LOCATIONS: Location[] = [
     address: "Garden District, New Orleans, LA 70130",
     tags: ["mansions", "magnolia", "elegant", "upscale", "Magazine St"],
     imageUrl: "/locations/nola-garden-district.jpg",
+    websiteUrl: "https://www.neworleans.com/plan/neighborhoods/uptown-garden-district/",
     bestFor: ["engagement", "family", "branding", "maternity", "birthday"],
   },
 ];
