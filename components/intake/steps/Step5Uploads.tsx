@@ -2,6 +2,7 @@
 import { useRef, useState, useCallback } from "react";
 import { UploadCloud, X } from "lucide-react";
 import type { IntakeFormData } from "@/types";
+import { compressImage } from "@/lib/compress-image";
 
 interface Props {
   data: IntakeFormData;
@@ -9,21 +10,29 @@ interface Props {
 }
 
 const MAX_FILES = 6;
-const MAX_SIZE_MB = 10;
+const MAX_SIZE_MB = 25;
 
 export default function Step5Uploads({ data, onChange }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [dragActive, setDragActive] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const addFiles = useCallback(
-    (newFiles: FileList | null) => {
+    async (newFiles: FileList | null) => {
       if (!newFiles) return;
       const valid = Array.from(newFiles)
         .filter((f) => f.type.startsWith("image/"))
         .filter((f) => f.size <= MAX_SIZE_MB * 1024 * 1024)
         .slice(0, MAX_FILES - data.inspirationPhotos.length);
-      if (valid.length > 0) {
-        onChange({ inspirationPhotos: [...data.inspirationPhotos, ...valid] });
+      if (valid.length === 0) return;
+      setIsProcessing(true);
+      try {
+        // Phone photos are often 4-8MB each; the submit endpoint rejects
+        // bodies over ~4.5MB total, so shrink each photo before storing it.
+        const compressed = await Promise.all(valid.map(compressImage));
+        onChange({ inspirationPhotos: [...data.inspirationPhotos, ...compressed] });
+      } finally {
+        setIsProcessing(false);
       }
     },
     [data.inspirationPhotos, onChange]
@@ -68,10 +77,14 @@ export default function Step5Uploads({ data, onChange }: Props) {
         >
           <UploadCloud className="w-10 h-10 text-brand-gold mb-3" strokeWidth={1.5} />
           <p className="font-medium text-brand-black text-sm">
-            Drop photos here or <span className="text-brand-gold underline">browse</span>
+            {isProcessing ? (
+              "Preparing your photos…"
+            ) : (
+              <>Drop photos here or <span className="text-brand-gold underline">browse</span></>
+            )}
           </p>
           <p className="text-xs text-brand-muted mt-1">
-            JPG, PNG, WEBP · max {MAX_SIZE_MB}MB each · up to {MAX_FILES} photos
+            JPG, PNG, WEBP · up to {MAX_FILES} photos
           </p>
           <input
             ref={fileInputRef}

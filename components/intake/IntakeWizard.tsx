@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { IntakeFormData } from "@/types";
+import { compressImage } from "@/lib/compress-image";
 import Step1Contact   from "./steps/Step1Contact";
 import Step2Occasion  from "./steps/Step2Occasion";
 import Step3Location  from "./steps/Step3Location";
@@ -106,10 +107,19 @@ export default function IntakeWizard({ onSuccess }: Props) {
       formData.append("visionDescription", lightingNote + visionDescription);
       formData.append("moods", JSON.stringify(moods));
 
-      // Append inspiration photos
-      inspirationPhotos.forEach((file) => {
+      // Append inspiration photos — re-compress anything still large so the
+      // total body stays under Vercel's ~4.5MB request limit.
+      const compressed = await Promise.all(inspirationPhotos.map(compressImage));
+      compressed.forEach((file) => {
         formData.append("inspirationPhotos", file);
       });
+
+      const totalBytes = compressed.reduce((sum, f) => sum + f.size, 0);
+      if (totalBytes > 4 * 1024 * 1024) {
+        throw new Error(
+          "Your inspiration photos are too large to send together. Please remove one or two and try again."
+        );
+      }
 
       const res = await fetch("/api/submissions", {
         method: "POST",
@@ -117,6 +127,11 @@ export default function IntakeWizard({ onSuccess }: Props) {
       });
 
       if (!res.ok) {
+        if (res.status === 413) {
+          throw new Error(
+            "Your inspiration photos are too large to send together. Please remove one or two and try again."
+          );
+        }
         const json = await res.json().catch(() => ({}));
         throw new Error(json.error ?? "Submission failed. Please try again.");
       }
